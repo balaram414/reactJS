@@ -1,9 +1,13 @@
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Curd from "./components/curd";
 import Todo from "./components/todo";
-import CustomHook from './components/customHook'
+import CustomHook from "./components/customHook";
 import NoMatch from "./components/notmatch";
 import ForwordRef from "./components/ForwordRef";
+import NestedRouting from "./components/NestedRouting";
+import Search from "./components/Search";
+import ContactList from "./components/ContactList";
+import DropdownList from './components/dropdownList'
 function App() {
   return (
     <div className="App">
@@ -22,21 +26,23 @@ function App() {
             CURD operation
           </Link>
           <Link to="/openFolder" style={{ padding: 5 }}>
-          Open Folder
+            Open Folder
           </Link>
           <Link to="/dropdown" style={{ padding: 5 }}>
-          Dropdown List
+            Dropdown List
           </Link>
           <Link to="/forwordRef" style={{ padding: 5 }}>
-          Forword Ref
+            Forword Ref
           </Link>
           <Link to="/hoc" style={{ padding: 5 }}>
-          HOC
+            HOC
           </Link>
           <Link to="/customHook" style={{ padding: 5 }}>
-          Custom Hook
+            Custom Hook
           </Link>
-          
+          <Link to="/nestedRouting" style={{ padding: 5 }}>
+            Nested Routing
+          </Link>
         </nav>
         <Routes>
           <Route path="/" />
@@ -44,6 +50,10 @@ function App() {
           <Route path="/curd" element={<Curd />} />
           <Route path="/forwordRef" element={<ForwordRef />} />
           <Route path="/customHook" element={<CustomHook />} />
+          <Route path="/dropdown" element={<DropdownList />} />
+          <Route path="/nestedRouting" element={<NestedRouting />}></Route>
+          <Route path="/nestedRouting/search" element={<Search />} />
+          <Route path="/nestedRouting/contactList" element={<ContactList />} />
           <Route path="*" element={<NoMatch />} />
         </Routes>
       </Router>
