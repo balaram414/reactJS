@@ -1,5 +1,6 @@
 import { useState } from "react";
-
+import { useDispatch,useSelector } from "react-redux";
+import { increment, decrement } from "../redux/counterSlice";
 function DropdownList() {
   let obj = [
     {
@@ -24,6 +25,11 @@ function DropdownList() {
       ],
     },
   ];
+
+  const count = useSelector((state) =>state.counter);
+  const dispatch = useDispatch();
+
+
   const [selectedState, setSelectedState] = useState();
   const [distList, setDistList] = useState([]);
   const [blockList, setBlock] = useState([]);
@@ -63,9 +69,8 @@ function DropdownList() {
     }
     setBlock([...list]);
   }
-
   return (
-    <div>
+    <div style={{backgroundColor:"gray"}}>
       <div style={{ paddingLeft: 150, paddingTop: 50 }}>
         <select onChange={(e) => stateSelect(e)}>
           {val.map((item) => {
@@ -87,6 +92,9 @@ function DropdownList() {
           })}
         </select>
       </div>
+      
+      <button onClick={() => dispatch(increment())}>INC {count} --</button>
+      <button onClick={() => dispatch(decrement())}>DEC {count} --</button>
     </div>
   );
 }

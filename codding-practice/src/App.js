@@ -7,10 +7,15 @@ import ForwordRef from "./components/ForwordRef";
 import NestedRouting from "./components/NestedRouting";
 import Search from "./components/Search";
 import ContactList from "./components/ContactList";
-import DropdownList from './components/dropdownList'
+import DropdownList from "./components/dropdownList";
+import { useSelector, useDispatch } from "react-redux";
+import { increment, decrement } from "./redux/counterSlice";
+
 function App() {
+  const count = useSelector((state) => state.counter);
+  const dispatch = useDispatch();
   return (
-    <div className="App">
+    <div style={{background:"LightGray"}}>
       <Router>
         <nav style={{ margin: 10 }}>
           <Link to="/" style={{ padding: 5 }}>
@@ -57,6 +62,9 @@ function App() {
           <Route path="*" element={<NoMatch />} />
         </Routes>
       </Router>
+      <h3>Parent components</h3>
+      <button onClick={() => dispatch(increment())}>INC {count} --</button>
+      <button onClick={() => dispatch(decrement())}>DEC {count} --</button>
     </div>
   );
 }
