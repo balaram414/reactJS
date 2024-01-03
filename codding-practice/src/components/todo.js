@@ -35,7 +35,6 @@ function Todo() {
     <div style={{ paddingLeft: 125, paddingTop: 125, backgroundColor: "blue" }}>
       <input type="text" onChange={(e) => typingTask(e)} />
       <button onClick={() => addTask()} disabled={active}>
-        {" "}
         Add Task
       </button>
       <br />
